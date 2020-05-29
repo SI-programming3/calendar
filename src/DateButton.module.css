@@ -3,16 +3,25 @@
   justify-content: center;
 }
 
-.days_div {
+.date_button {
   background: #fff;
   border: 1px solid #999;
   font-size: 20px;
   font-weight: bold;
-  line-height: 20px;
-  height: 20px;
+  line-height: 47px;
+  height: 47px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 45px;
+  width: 47px;
+}
+
+/*
+.date_button:focus {
+  outline: none;
+}
+*/
+.kbd-navigation .date_button:focus {
+  background: #ddd;
 }
