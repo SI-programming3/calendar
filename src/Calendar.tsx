@@ -11,12 +11,10 @@ function Calendar() {
     "Fri.",
     "Sat.",
   ];
-  let date = new Date();
-  date.setDate(1);
   return (
     <div>
       calendar
-      <Days day={day} date={date} />
+      <Days dayOfWeek={day} monthIndex={4} />
     </div>
   );
 }
