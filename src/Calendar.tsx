@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Days from "./Days";
 import styles from "./Calendar.module.css";
 
@@ -12,13 +12,13 @@ function Calendar() {
     "Fri.",
     "Sat.",
   ];
-  let today = new Date();
+  const [YandM, setYandM] = useState(new Date());
 
   const beforeClick = () => {
-    today.setMonth(today.getMonth() - 1);
+    setYandM(new Date(YandM.getFullYear(), YandM.getMonth() - 1));
   };
   const afterClick = () => {
-    today.setMonth(today.getMonth() + 1);
+    setYandM(new Date(YandM.getFullYear(), YandM.getMonth() + 1));
   };
 
   return (
@@ -30,8 +30,8 @@ function Calendar() {
       </div>
       <Days
         dayOfWeek={day}
-        yearIndex={today.getFullYear()}
-        monthIndex={today.getMonth()}
+        yearIndex={YandM.getFullYear()}
+        monthIndex={YandM.getMonth()}
       />
     </div>
   );

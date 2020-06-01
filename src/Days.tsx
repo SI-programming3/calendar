@@ -22,7 +22,7 @@ function Days({ dayOfWeek, yearIndex, monthIndex }: Props) {
         })}
       </div>
 
-      <DateButton monthIndex={monthIndex} />
+      <DateButton yearIndex={yearIndex} monthIndex={monthIndex} />
     </div>
   );
 }

@@ -16,11 +16,3 @@
   text-align: center;
   width: 47px;
 }
-
-.date_button:focus {
-  outline: none;
-  background: lightblue;
-}
-.kbd-navigation .date_button:focus {
-  background: #ddd;
-}

@@ -2,11 +2,13 @@ import React from "react";
 import styles from "./DateButton.module.css";
 
 interface Props {
+  yearIndex: number;
   monthIndex: number;
 }
 
-function DateButton({ monthIndex }: Props) {
+function DateButton({ yearIndex, monthIndex }: Props) {
   const firstDate = new Date();
+  firstDate.setFullYear(yearIndex);
   firstDate.setMonth(monthIndex);
   firstDate.setDate(1);
 
