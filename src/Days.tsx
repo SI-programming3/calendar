@@ -4,13 +4,14 @@ import DateButton from "./DateButton";
 
 interface Props {
   dayOfWeek: string[];
+  yearIndex: number;
   monthIndex: number;
 }
 
-function Days({ dayOfWeek, monthIndex }: Props) {
+function Days({ dayOfWeek, yearIndex, monthIndex }: Props) {
   return (
     <div>
-      <div>{`${monthIndex + 1}月`}</div>
+      <div>{`${yearIndex}年${monthIndex + 1}月`}</div>
       <div className={styles.row}>
         {dayOfWeek.map((d) => {
           return (
@@ -27,29 +28,3 @@ function Days({ dayOfWeek, monthIndex }: Props) {
 }
 
 export default Days;
-
-/*[...Array(6)].map((_, i) => {
-        return (
-          <div className={styles.row} key={i}>
-            {[...Array(7)].map((_, j) => {
-              return (
-                <span key={j} className={styles.date_span}>
-                  {(() => {
-                    if (
-                      j !== firstDate.getDay() ||
-                      monthIndex !== firstDate.getMonth()
-                    ) {
-                      return "";
-                    } else {
-                      date = firstDate.getDate();
-                      firstDate.setDate(firstDate.getDate() + 1);
-                      return date;
-                    }
-                  })()}
-                </span>
-              );
-            })}
-          </div>
-        );
-      })
-      */
