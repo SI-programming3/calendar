@@ -13,12 +13,19 @@ function Calendar() {
     "Sat.",
   ];
   const [YandM, setYandM] = useState(new Date());
+  const [focusDay, setFocusDay] = useState("");
 
   const beforeClick = () => {
     setYandM(new Date(YandM.getFullYear(), YandM.getMonth() - 1));
   };
   const afterClick = () => {
     setYandM(new Date(YandM.getFullYear(), YandM.getMonth() + 1));
+  };
+
+  const handleClick = (i: number, j: number) => {
+    setFocusDay(
+      `${YandM.getFullYear()}年${YandM.getMonth() + 1}月${i}日${day[j]}`
+    );
   };
 
   return (
@@ -32,7 +39,9 @@ function Calendar() {
         dayOfWeek={day}
         yearIndex={YandM.getFullYear()}
         monthIndex={YandM.getMonth()}
+        onClick={(i: number, j: number) => handleClick(i, j)}
       />
+      {focusDay}
     </div>
   );
 }

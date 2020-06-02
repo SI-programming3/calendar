@@ -6,9 +6,10 @@ interface Props {
   dayOfWeek: string[];
   yearIndex: number;
   monthIndex: number;
+  onClick: (i: number, j: number) => void;
 }
 
-function Days({ dayOfWeek, yearIndex, monthIndex }: Props) {
+function Days({ dayOfWeek, yearIndex, monthIndex, onClick }: Props) {
   return (
     <div>
       <div>{`${yearIndex}年${monthIndex + 1}月`}</div>
@@ -22,7 +23,11 @@ function Days({ dayOfWeek, yearIndex, monthIndex }: Props) {
         })}
       </div>
 
-      <DateButton yearIndex={yearIndex} monthIndex={monthIndex} />
+      <DateButton
+        yearIndex={yearIndex}
+        monthIndex={monthIndex}
+        onClick={onClick}
+      />
     </div>
   );
 }

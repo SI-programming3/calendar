@@ -4,22 +4,24 @@ import styles from "./DateButton.module.css";
 interface Props {
   yearIndex: number;
   monthIndex: number;
+  onClick: (i: number, j: number) => void;
 }
 
-function DateButton({ yearIndex, monthIndex }: Props) {
+function DateButton({ yearIndex, monthIndex, onClick }: Props) {
   const firstDate = new Date();
   firstDate.setFullYear(yearIndex);
   firstDate.setMonth(monthIndex);
   firstDate.setDate(1);
+  const firstDay = firstDate.getDay();
 
   let date: number;
   let disabled = true;
-  let buttonIndex: number | string;
+  let buttonIndex: number;
 
   const dateButton = (j: number) => {
     if (j !== firstDate.getDay() || monthIndex !== firstDate.getMonth()) {
       disabled = true;
-      return "";
+      return 0;
     } else {
       date = firstDate.getDate();
       firstDate.setDate(firstDate.getDate() + 1);
@@ -40,8 +42,9 @@ function DateButton({ yearIndex, monthIndex }: Props) {
                   key={j}
                   className={styles.date_button}
                   disabled={disabled}
+                  onClick={() => onClick(i * 7 + j - firstDay + 1, j)}
                 >
-                  {buttonIndex}
+                  {buttonIndex === 0 ? "" : buttonIndex}
                 </button>
               );
             })}
