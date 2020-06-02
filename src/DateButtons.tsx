@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./DateButton.module.css";
+import styles from "./DateButtons.module.css";
 
 interface Props {
   yearIndex: number;
@@ -7,7 +7,7 @@ interface Props {
   onClick: (i: number, j: number) => void;
 }
 
-function DateButton({ yearIndex, monthIndex, onClick }: Props) {
+function DateButtons({ yearIndex, monthIndex, onClick }: Props) {
   const firstDate = new Date();
   firstDate.setFullYear(yearIndex);
   firstDate.setMonth(monthIndex);
@@ -40,9 +40,19 @@ function DateButton({ yearIndex, monthIndex, onClick }: Props) {
               return (
                 <button
                   key={j}
-                  className={styles.date_button}
+                  className={`${styles.date_button} ${
+                    j === 0 ? styles.Sunday : j === 6 ? styles.Saturday : ""
+                  }`}
                   disabled={disabled}
-                  onClick={() => onClick(i * 7 + j - firstDay + 1, j)}
+                  onClick={() => {
+                    const date = new Date();
+                    date.setFullYear(yearIndex);
+                    date.setMonth(monthIndex);
+                    const nth = i * 7 + j;
+                    const d = nth - firstDay + 1;
+                    date.setDate(d);
+                    onClick(d, j);
+                  }}
                 >
                   {buttonIndex === 0 ? "" : buttonIndex}
                 </button>
@@ -55,4 +65,4 @@ function DateButton({ yearIndex, monthIndex, onClick }: Props) {
   );
 }
 
-export default DateButton;
+export default DateButtons;

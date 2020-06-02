@@ -24,3 +24,11 @@
 .kbd-navigation .date_button:focus {
   background: #ddd;
 }
+
+.Sunday {
+  color: red;
+}
+
+.Saturday {
+  color: blue;
+}

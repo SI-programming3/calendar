@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Days.module.css";
-import DateButton from "./DateButton";
+import DateButtons from "./DateButtons";
 
 interface Props {
   dayOfWeek: string[];
@@ -14,16 +14,21 @@ function Days({ dayOfWeek, yearIndex, monthIndex, onClick }: Props) {
     <div>
       <div>{`${yearIndex}年${monthIndex + 1}月`}</div>
       <div className={styles.row}>
-        {dayOfWeek.map((d) => {
+        {dayOfWeek.map((d, i) => {
           return (
-            <div key={d} className={styles.days_div}>
+            <div
+              key={d}
+              className={`${styles.days_div} ${
+                i === 0 ? styles.Sunday : i === 6 ? styles.Saturday : ""
+              }`}
+            >
               {d}
             </div>
           );
         })}
       </div>
 
-      <DateButton
+      <DateButtons
         yearIndex={yearIndex}
         monthIndex={monthIndex}
         onClick={onClick}
